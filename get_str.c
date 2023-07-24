@@ -1,5 +1,5 @@
 #include "holberton.h"
-.
+
 /**
  * str - prints string to stdout
  * @string: list
