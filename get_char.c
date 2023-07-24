@@ -1,5 +1,5 @@
 #include "holberton.h"
-.
+
 /**
  * ch - function to return char
  * @character: list given
