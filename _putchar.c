@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+.
 /**
  * _putchar - function to print char
  * @c: char being passed
