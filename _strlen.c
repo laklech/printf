@@ -1,5 +1,5 @@
 #include "holberton.h"
-.
+
 /**
  * _strlen - gets string length
  * @string: string
