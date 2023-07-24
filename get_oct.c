@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+.
 /**
  * _oct - function to print octal
  * @octo: list being passed
