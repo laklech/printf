@@ -28,6 +28,7 @@ int _rot13(va_list rot)
 		}
 		else
 			count = count + _putchar(s[a]);
+		.
 		a++;
 	}
 	return (count);
