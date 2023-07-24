@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+.
 /**
  * _bin - function to print binary
  * @bin: list being passed
