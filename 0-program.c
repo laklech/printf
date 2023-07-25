@@ -1,5 +1,5 @@
 #include "main.h"
-#define UNUSED(x) (void)x
+#define UNUSED(x) (void)(x)
 
 /**
  * get_char - Function that prints a char
