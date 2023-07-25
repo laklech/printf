@@ -13,7 +13,7 @@
 int get_unsigned(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int h = BUFF_SIZE - 2;
+	int h = BUFSIZ - 2;
 	unsigned long int dig = va_arg(types, unsigned long int);
 
 	dig = convert_size_unsgnd(dig, size);
@@ -21,7 +21,7 @@ int get_unsigned(va_list types, char buffer[],
 	if (dig == 0)
 		buffer[h--] = '0';
 
-	buffer[BUFF_SIZE - 1] = '\0';
+	buffer[BUFSIZ - 1] = '\0';
 
 	while (dig > 0)
 	{
@@ -29,7 +29,7 @@ int get_unsigned(va_list types, char buffer[],
 		dig /= 10;
 	}
 	h++;
-	return (write_unsgned(0, h, buffer, flags, width, precision, size));
+	return (write_unsigned(0, h, buffer, flags, width, precision, size));
 }
 
 /**
@@ -63,7 +63,7 @@ int get_oct(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 
-	int v = BUFF_SIZE - 2;
+	int v = BUFSIZ - 2;
 	unsigned long int num = va_arg(types, unsigned long int);
 	unsigned long int init_num = num;
 
@@ -74,7 +74,7 @@ int get_oct(va_list types, char buffer[],
 	if (num == 0)
 		buffer[v--] = '0';
 
-	buffer[BUFF_SIZE - 1] = '\0';
+	buffer[BUFSIZ - 1] = '\0';
 
 	while (num > 0)
 	{
@@ -84,7 +84,7 @@ int get_oct(va_list types, char buffer[],
 	if (flags & F_HASH && init_num != 0)
 		buffer[v--] = '0';
 	v++;
-	return (write_unsgned(0, v, buffer, flags, width, precision, size));
+	return (write_unsigned(0, v, buffer, flags, width, precision, size));
 }
 
 /**
@@ -102,18 +102,18 @@ int get_oct(va_list types, char buffer[],
 int print_hexa(va_list types, char map_to[], char buffer[],
 	int flags, char flag_ch, int width, int precision, int size)
 {
-	int c = BUFF_SIZE - 2;
+	int c = BUFSIZ - 2;
 	unsigned long int dig = va_arg(types, unsigned long int);
 	unsigned long int init_num = dig;
 
 	UNUSED(width);
 
-	dig = convert_size_unsgnd(num, size);
+	dig = convert_size_unsgnd(dig, size);
 
 	if (dig == 0)
 		buffer[c--] = '0';
 
-	buffer[BUFF_SIZE - 1] = '\0';
+	buffer[BUFSIZ - 1] = '\0';
 
 	while (dig > 0)
 	{
@@ -127,7 +127,7 @@ int print_hexa(va_list types, char map_to[], char buffer[],
 		buffer[c--] = '0';
 	}
 	c++;
-	return (write_unsgned(0, c, buffer, flags, width, precision, size));
+	return (write_unsigned(0, c, buffer, flags, width, precision, size));
 }
 
 /**

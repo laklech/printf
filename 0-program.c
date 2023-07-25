@@ -53,22 +53,22 @@ int print_percent(va_list types, char buffer[],
 int get_int(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int d = BUFF_SIZE - 2;
+	int d = BUFSIZ - 2;
 	int is_negative = 0;
 	long int b = va_arg(types, long int);
 	unsigned long int num;
 
-	b = convert_size_number(n, size);
+	b = convert_size_number(b, size);
 
 	if (b == 0)
 		buffer[d--] = '0';
 
-	buffer[BUFF_SIZE - 1] = '\0';
+	buffer[BUFSIZ - 1] = '\0';
 	num = (unsigned long int)b;
 
 	if (b < 0)
 	{
-		num = (unsigned long int)((-1) * n);
+		num = (unsigned long int)((-1) * b);
 		is_negative = 1;
 	}
 
@@ -139,7 +139,7 @@ int get_bin(va_list types, char buffer[],
 int get_string(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int m, len = 0;
+	int m, length = 0;
 	char *str = va_arg(types, char *);
 
 	UNUSED(buffer);
@@ -154,28 +154,28 @@ int get_string(va_list types, char buffer[],
 			str = "      ";
 	}
 
-	while (str[len] != '\0')
-		len++;
+	while (str[length] != '\0')
+		length++;
 
-	if (precision >= 0 && precision < len)
-		len = precision;
+	if (precision >= 0 && precision < length)
+		length = precision;
 
-	if (width > len)
+	if (width > length)
 	{
 		if (flags & F_MINUS)
 		{
-			write(1, &str[0], len);
-			for (m = width - len; m > 0; m--)
+			write(1, &str[0], length);
+			for (m = width - length; m > 0; m--)
 				write(1, " ", 1);
 			return (width);
 		}
 		else
 		{
-			for (m = width - len; m > 0; m--)
+			for (m = width - length; m > 0; m--)
 				write(1, " ", 1);
-			write(1, &str[0], len);
+			write(1, &str[0], length);
 			return (width);
 		}
 	}
-	return (write(1, str, len));
+	return (write(1, str, length));
 }

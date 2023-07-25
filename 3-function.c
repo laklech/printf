@@ -14,7 +14,7 @@ int print_pointer(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char extra_c = 0, padd = ' ';
-	int index = BUFF_SIZE - 2, length = 2, padd_start = 1;
+	int index = BUFSIZ - 2, length = 2, padd_start = 1;
 	/* length=2, for '0x' */
 	unsigned long num_addrs;
 	char map_to[] = "0123456789abcdef";
@@ -26,7 +26,7 @@ int print_pointer(va_list types, char buffer[],
 	if (addrs == NULL)
 		return (write(1, "(nil)", 5));
 
-	buffer[BUFF_SIZE - 1] = '\0';
+	buffer[BUFSIZ - 1] = '\0';
 	UNUSED(precision);
 
 	num_addrs = (unsigned long)addrs;
@@ -47,8 +47,8 @@ int print_pointer(va_list types, char buffer[],
 
 	index++;
 
-	/*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
-	return (write_pointer(buffer, ind, length,
+	/*return (write(1, &buffer[i], BUFSIZ - i - 1));*/
+	return (write_pointer(buffer, index, length,
 		width, flags, padd, extra_c, padd_start));
 }
 
@@ -132,7 +132,7 @@ int write_rot13(va_list types, char buffer[],
 			{
 				x = out[q];
 				write(1, &x, 1);
-				check++;
+				count++;
 				break;
 			}
 		}
@@ -140,10 +140,10 @@ int write_rot13(va_list types, char buffer[],
 		{
 			x = str[m];
 			write(1, &x, 1);
-			check++;
+			count++;
 		}
 	}
-	return (check);
+	return (count);
 }
 
 /**
