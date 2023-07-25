@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define UNUSED(x) (void)(x)
+#define BUFF_SIZE 1024
+
 /* Sizes */
 #define S_SHORT 1
 #define S_LONG 2
