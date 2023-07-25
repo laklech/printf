@@ -1,4 +1,5 @@
 #include "main.h"
+#define UNUSED(x) (void)x
 
 /**
  * get_unsigned - function that prints an unsigned number

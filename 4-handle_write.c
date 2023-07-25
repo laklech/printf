@@ -1,4 +1,5 @@
 #include "main.h"
+#define UNUSED(x) (void)x
 
 /**
  * handle_write_char - function that prints a string

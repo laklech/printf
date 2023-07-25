@@ -1,7 +1,8 @@
 #include "main.h"
+#define UNUSED(x) (void)x
 
 /**
- * print_char - Function that prints a char
+ * get_char - Function that prints a char
  * @types: List of arguments
  * @buffer: Array buffer to handle print
  * @flags:  Calculates active flags
@@ -10,7 +11,7 @@
  * @size: Size specifier
  * Return: Number of chars printed
  */
-int print_char(va_list types, char buffer[],
+int get_char(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char m = va_arg(types, int);

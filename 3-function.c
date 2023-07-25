@@ -1,4 +1,5 @@
 #include "main.h"
+#define UNUSED(x) (void)x
 
 /**
  * print_pointer - function that prints the memory address of a variable
