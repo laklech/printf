@@ -3,7 +3,7 @@
 void print_buff(char buffer[], int *buff_ind);
 
 /**
- * _printf - writes output according to format
+ * _printf - function that writes output according to format
  * @format: string to be considered
  * Return: the character to be printed
  */
@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 
 	for (f = 0; format && format[f] != '\0'; f++)
 	{
-		if (format[f] != 37)
+		if (format[f] != '%')
 		{
 			buffer[buff_ind++] = format[f];
 			if (buff_ind == BUFF_SIZE)

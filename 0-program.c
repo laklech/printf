@@ -117,7 +117,7 @@ int get_bin(va_list types, char buffer[],
 		add += c[q];
 		if (add || q == 31)
 		{
-			char z = 48 + c[q];
+			char z = '0' + c[q];
 
 			write(1, &z, 1);
 			count++;
